@@ -1,0 +1,22 @@
+/* -----------------------------------------------------
+   created with https://www.codeandweb.com/texturepacker
+   -----------------------------------------------------
+   $TexturePacker:SmartUpdate:f207166d777e11390b526db1fe0b2d46:c22c1be9368d609dfcfe8df7dc089cf0:770a42c6672cdb9b82dacc9c540ba9e5$
+   -----------------------------------------------------
+
+   usage: <span class="{-spritename-} sprite"></span>
+
+   replace {-spritename-} with the sprite you like to use
+
+*/
+
+.sprite {display:inline-block; overflow:hidden; background-repeat: no-repeat;background-image:url(icon.png);}
+
+/*.Discord未选 {width:34px; height:34px; background-position: -0px -0px}*/
+.Discord选中 {width:34px; height:34px; background-position: -34px -0px}
+/*.twitter未选 {width:34px; height:34px; background-position: -68px -0px}*/
+.twitter选中 {width:34px; height:34px; background-position: -0px -34px}
+/*.下载未选 {width:34px; height:34px; background-position: -34px -34px}*/
+.下载选中 {width:34px; height:34px; background-position: -68px -34px}
+/*.官网未选拷贝 {width:34px; height:34px; background-position: -0px -68px}*/
+.官网选中拷贝 {width:34px; height:34px; background-position: -34px -68px}
