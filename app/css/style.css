@@ -1,12 +1,20 @@
 @charset "utf-8";
 @import url("hover-min.css");
 
-/*导入字体*/
+/*声明 WebFont*/
 
+@font-face {
+    font-family: 'pinghei';
+    src: url('../font/GenJyuuGothicL-Heavy.eot');
+    src: url('../font/GenJyuuGothicL-Heavy.eot?#font-spider') format('embedded-opentype'), url('../font/GenJyuuGothicL-Heavy.woff') format('woff'), url('../font/GenJyuuGothicL-Heavy.ttf') format('truetype'), url('../font/GenJyuuGothicL-Heavy.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
-/*@font-face { font-family: 'hui'; src: url('../font/hui.eot?#font-spider') format('embedded-opentype'), url('../font/hui.ttf') format('truetype'); font-weight: normal; font-style: normal; }
-.hui_footer { font-family: "hui"; color: #fff; }
-*/
+.pinghei {
+    font-family: 'pinghei';
+    color: #fff;
+}
 
 
 /* CSS Document wlo:Cflower */

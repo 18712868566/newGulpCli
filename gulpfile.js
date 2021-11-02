@@ -7,22 +7,38 @@ const {
     watch
 } = gulp; //  创建一个文件拷贝任务,文件拷贝需要使用到gulp提供的方法
 const concat = require('gulp-concat'); // 文件合并
-const cssMinify = require('gulp-css-minify') // css文件压缩
-const autoprefixer = require('gulp-autoprefixer') // css自动补全前缀
+const cssMinify = require('gulp-css-minify'); // css文件压缩
+const autoprefixer = require('gulp-autoprefixer'); // css自动补全前缀
 const del = require('del'); //清空文件夹，避免文件冗余
+
 const babel = require('gulp-babel'); // es6转es5
-const uglify = require('gulp-uglify') //压缩JS
+const uglify = require('gulp-uglify'); //压缩JS
+
+const imagemin = require('gulp-imagemin'); // 压缩图片
+const cache = require('gulp-cache'); //基于临时文件缓存的代理任务
+const pngquant = require('imagemin-pngquant'); // 控制台打印前后变化
+const tiny = require('gulp-tinypng-nokey'); // tinypng 模拟用户上传和下载的行为，来得到压缩图片，突破使用官网api每月500张限制
+
+const browserSync = require('browser-sync').create(); // 浏览器运行
+
+// const changed = require('gulp-changed'); //监听文件发生改变
+
+// font字体压缩
+var fontSpider = require('gulp-font-spider'); // 字体压缩
 
 
-
-
-function clean(cb) {
-    del(['dist']);
-    cb();
+/*
+    清空目标目录
+*/
+function clean() {
+    return del(['dist']);
 }
-
-function css(cb) {
-    gulp.src('./app/css/**/*.css') // 读取css 文件路径
+/*
+ *   ==================================css
+ *   处理css
+ */
+function css() {
+    return gulp.src('./app/css/**/*.css') // 读取css 文件路径
         .pipe(concat('build.min.css')) //合并匹配到的指定类型文件并命名为 "build.min.css"
         .pipe(autoprefixer({
             cascade: true // 添加前缀前是否压缩 默认值 true
@@ -31,11 +47,14 @@ function css(cb) {
         .pipe(cssMinify()) // css 文件压缩
         .pipe(gulp.dest('./dist/css')) //写入dist文件夹
 
-    cb();
 }
 
-function js(cb) {
-    gulp.src('./app/js/**/*.js') // 读取js 文件路径
+/*
+ *   ==================================js
+ *   处理js
+ */
+function js() {
+    return gulp.src(['./app/js/**/*.js']) // 读取js 文件路径
         .pipe(babel()) //es转es5
         .pipe(uglify({
             compress: {
@@ -43,14 +62,93 @@ function js(cb) {
                 drop_debugger: true // 过滤 debugger
             },
             output: {
-                beautify: false, //开启美化
+                beautify: true, //开启美化
                 comments: 'some' // 保留部分注释
             }
         }))
-        .pipe(concat('build.min.js')) //合并匹配到的指定类型文件并命名为 "build.min.js"
+        //.pipe(concat('build.min.js')) //合并匹配到的指定类型文件并命名为 "build.min.js"
         .pipe(gulp.dest('./dist/js')) // 输出文件路径
-        
-    cb();
+
+}
+
+/*
+ *   ==================================img
+ *   处理图片
+ */
+function minimg() {
+    return gulp.src('./app/images/**/*.{png,jpg,gif,svg}')
+        .pipe(imagemin({
+            svgoPlugins: [{ removeViewBox: false }], //不要移除svg的viewbox属性
+            optimizationLevel: 3, //类型：Number  默认：3  取值范围：0-7（优化等级）
+            progressive: true, //类型：Boolean 默认：false 无损压缩jpg图片
+            interlaced: true, //类型：Boolean 默认：false 隔行扫描gif进行渲染
+            multipass: true, //类型：Boolean 默认：false 多次优化svg直到完全优化
+            use: [pngquant()] //使用pngquant深度压缩png图片的imagemin插件
+        }))
+        .pipe(cache(tiny()))
+        .pipe(gulp.dest('./dist/images/'));
+}
+
+
+/*
+ *   ==================================font
+ *   处理字体
+ */
+function fontspider() {
+    return gulp.src('./app/*.html')
+        .pipe(fontSpider())
+}
+
+function copyFont() {
+    return gulp.src('./app/font/*')
+        .pipe(gulp.dest('./dist/font/'))
+}
+
+/*
+ *   ==================================静态资源
+ *   copy静态资源
+ */
+function copyAudio() {
+    return gulp.src(['./app/audio/**/*.*'])
+        .pipe(gulp.dest('./dist/audio'));
+}
+
+function copyVideo() {
+    return gulp.src(['./app/video/**/*.*'])
+        .pipe(gulp.dest('./dist/video'));
+}
+
+/*
+ *   ==================================HTML压缩
+ *  html
+ */
+function setHtmlmin() {
+    const options = {
+        removeComments: false, //清除HTML注释
+        collapseWhitespace: false, //压缩HTML
+        collapseBooleanAttributes: true, //省略布尔属性的值 <input checked="true"/> ==> <input />
+        removeEmptyAttributes: true, //删除所有空格作属性值 <input id="" /> ==> <input />
+        removeScriptTypeAttributes: true, //删除<script>的type="text/javascript"
+        removeStyleLinkTypeAttributes: true, //删除<style>和<link>的type="text/css"
+        minifyJS: true, //压缩页面JS
+        minifyCSS: true //压缩页面CSS
+    };
+    return gulp.src(['./app/*.html'])
+        .pipe(gulp.dest('./dist/'));
+}
+
+/*
+ *   ==================================server
+ *   本地开发
+ */
+
+function server() {
+    browserSync.init({
+        server: {
+            baseDir: './app'
+        }
+    });
+    gulp.watch('./app').on('change', browserSync.reload);
 }
 
 
@@ -58,7 +156,26 @@ function js(cb) {
 exports.clean = clean;
 exports.css = css;
 exports.js = js;
+exports.minimg = minimg;
+exports.fontspider = fontspider;
+exports.copyFont = copyFont;
+exports.server = server;
+exports.copyAudio = copyAudio;
+exports.copyVideo = copyVideo;
+exports.setHtmlmin = setHtmlmin;
 
+// 单独处理js
 exports.buildJs = series(clean, js);
 
-exports.default = series(clean, css, js);
+exports.default = series(
+    clean,
+    parallel(
+        css,
+        js,
+        series(fontspider, copyFont)
+    ),
+    minimg,
+    copyAudio,
+    copyVideo,
+    setHtmlmin
+);

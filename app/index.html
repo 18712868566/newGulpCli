@@ -21,400 +21,402 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/style.css">
 
-<body>
-    <div id="wrap" class="wrap">
-        <div class="fixed_silderbar " id="left_menu">
-            <!-- 图标 -->
-            <input type="checkbox" id="menu_trigger">
-            <label for="menu_trigger" id="menu_trigger_label" class="menu-trigger">
+    <body>
+        <div id="wrap" class="wrap">
+            <div class="fixed_silderbar " id="left_menu">
+                <!-- 图标 -->
+                <input type="checkbox" id="menu_trigger">
+                <label for="menu_trigger" id="menu_trigger_label" class="menu-trigger">
                 <span class="span"></span>
                 <span class="span"></span>
                 <span class="span"></span>
             </label>
-            <!-- 三方小icon -->
-            <p class="sg_icon">
-                <a href="javascript:;" class="btn btn_home"></a>
-                <a href="javascript:;" class="btn btn_down"></a>
-                <a href="javascript:;" class="btn btn_discord"></a>
-                <a href="javascript:;" class="btn btn_twitter"></a>
-            </p>
-            <!-- 内部导航 -->
-            <div class="silderbar_max_nav left_menu-inner">
-                <h1><img class="" src="images/sidebar/logo.png" alt=""></h1>
-                <nav class="left-navigation">
-                    <a data-txt="英雄"> <span><img class="imgcove" src="images/sidebar/nav-txt1.png" alt=""></span></a>
-                    <a data-txt="情报"> <span><img class="imgcove" src="images/sidebar/nav-txt2.png" alt=""></span></a>
-                    <a data-txt="活动"> <span><img class="imgcove" src="images/sidebar/nav-txt3.png" alt=""></span></a>
-                </nav>
-            </div>
-        </div>
-        <!-- page -->
-        <div class="swiper-container" id="global">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide swiper-no-swiping page1">
-                    <!-- 背景视频 -->
-                    <div id="container">
-                        <video id="background_video" loop muted></video>
-                        <div id="video_cover"></div>
-                        <div id="overlay"></div>
-                    </div>
-                    <div class="box_cent">
-                        <!-- 录像 -->
-                        <div class="luxiang">
-                            <div class="rec-time"></div>
-                        </div>
-                        <!-- slo -->
-                        <div class="slo"> </div>
-                        <!-- 视频1 -->
-                        <div class="homeV1 spr1_imgarr">
-                            <div class="min_video spr1_imgarr">
-                                <p class="btn btn_play" data-url="">
-                                    <img class="imgcove" src="images/page1/vfm.png" alt="">
-                                    <i class="btn i_play spr1_imgarr"></i>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- 视频2 -->
-                        <div class="homeV2 spr1_imgarr">
-                            <div class="min_video spr1_imgarr">
-                                <p class="btn btn_play" data-url="">
-                                    <img class="imgcove" src="images/page1/vfm.png" alt="">
-                                    <i class="btn c_play spr1_imgarr"></i>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="homenav">
-                            <p class="navItem spr1_imgarr " data-txt='英雄'>
-                                <span class="n_txt"></span>
-                            </p>
-                            <p class="navItem spr1_imgarr " data-txt='情报'>
-                                <span class="n_txt"></span>
-                            </p>
-                            <p class="navItem spr1_imgarr " data-txt='活动'>
-                                <span class="n_txt"></span>
-                            </p>
-                        </div>
-                    </div>
+                <!-- 三方小icon -->
+                <p class="sg_icon">
+                    <a href="javascript:;" class="btn btn_home"></a>
+                    <a href="javascript:;" class="btn btn_down"></a>
+                    <a href="javascript:;" class="btn btn_discord"></a>
+                    <a href="javascript:;" class="btn btn_twitter"></a>
+                </p>
+                <!-- 内部导航 -->
+                <div class="silderbar_max_nav left_menu-inner">
+                    <h1><img class="" src="images/sidebar/logo.png" alt=""></h1>
+                    <nav class="left-navigation">
+                        <a data-txt="英雄"> <span><img class="imgcove" src="images/sidebar/nav-txt1.png" alt=""></span></a>
+                        <a data-txt="情报"> <span><img class="imgcove" src="images/sidebar/nav-txt2.png" alt=""></span></a>
+                        <a data-txt="活动"> <span><img class="imgcove" src="images/sidebar/nav-txt3.png" alt=""></span></a>
+                    </nav>
                 </div>
-                <div class="swiper-slide swiper-no-swiping page2">
-                    <!-- 装饰元素 -->
-                    <div class="zhuangshi">
-                        <span class="cl1"></span>
-                        <span class="cl2"></span>
-                        <p class="line1 ani_line1"></p>
-                        <p class="line2 ani_line2"></p>
-                        <p class="line3 ani_line3"></p>
-                        <p class="line4 ani_line4"></p>
-                        <p class="line5 ani_line5"></p>
-                        <p class="line6 ani_line6"></p>
-                        <p class="line7"></p>
+            </div>
+            <div class="pinghei">
+                33个非常实用的JavaScript一行代码，建议收藏！ 这是我参与11月更文挑战的第2天，活动详情查看：2021最后一次更文挑战 最近在国外技术社区看到了一些关于一行代码的文章，感觉很有意思，就整理了一下来分享给大家，希望对你有所帮助~ 这些方法使用到了一些API，简化了操作，但是有些方法写一行属实不太优雅，所以这里主要还是学习API的使用技巧！
+            </div>
+            <!-- page -->
+            <div class="swiper-container" id="global">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide swiper-no-swiping page1">
+                        <!-- 背景视频 -->
+                        <div id="container">
+                            <video id="background_video" loop muted></video>
+                            <div id="video_cover"></div>
+                            <div id="overlay"></div>
+                        </div>
+                        <div class="box_cent">
+                            <!-- 录像 -->
+                            <div class="luxiang">
+                                <div class="rec-time"></div>
+                            </div>
+                            <!-- slo -->
+                            <div class="slo"> </div>
+                            <!-- 视频1 -->
+                            <div class="homeV1 spr1_imgarr">
+                                <div class="min_video spr1_imgarr">
+                                    <p class="btn btn_play" data-url="">
+                                        <img class="imgcove" src="images/page1/vfm.png" alt="">
+                                        <i class="btn i_play spr1_imgarr"></i>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- 视频2 -->
+                            <div class="homeV2 spr1_imgarr">
+                                <div class="min_video spr1_imgarr">
+                                    <p class="btn btn_play" data-url="">
+                                        <img class="imgcove" src="images/page1/vfm.png" alt="">
+                                        <i class="btn c_play spr1_imgarr"></i>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="homenav">
+                                <p class="navItem spr1_imgarr " data-txt='英雄'>
+                                    <span class="n_txt"></span>
+                                </p>
+                                <p class="navItem spr1_imgarr " data-txt='情报'>
+                                    <span class="n_txt"></span>
+                                </p>
+                                <p class="navItem spr1_imgarr " data-txt='活动'>
+                                    <span class="n_txt"></span>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <!-- 内容元素 -->
-                    <div class="hero_box">
-                        <h1>parto1</h1>
-                        <!-- 英雄tab -->
-                        <div class="hero_list">
-                            <a href="javascript:;" class="tab1 ">
-                                <div class="character-thumb-inner">
-                                    <span class="img_icon">
+                    <div class="swiper-slide swiper-no-swiping page2">
+                        <!-- 装饰元素 -->
+                        <div class="zhuangshi">
+                            <span class="cl1"></span>
+                            <span class="cl2"></span>
+                            <p class="line1 ani_line1"></p>
+                            <p class="line2 ani_line2"></p>
+                            <p class="line3 ani_line3"></p>
+                            <p class="line4 ani_line4"></p>
+                            <p class="line5 ani_line5"></p>
+                            <p class="line6 ani_line6"></p>
+                            <p class="line7"></p>
+                        </div>
+                        <!-- 内容元素 -->
+                        <div class="hero_box">
+                            <h1>parto1</h1>
+                            <!-- 英雄tab -->
+                            <div class="hero_list">
+                                <a href="javascript:;" class="tab1 ">
+                                    <div class="character-thumb-inner">
+                                        <span class="img_icon">
                                         2b
                                     </span>
-                                    <div class="hover_frame_outside"></div>
-                                    <div class="hover_frame_top"></div>
-                                    <div class="hover_frame_bottom"></div>
-                                </div>
-                            </a>
-                            <a href="javascript:;" class="tab2 ">
-                                <div class="character-thumb-inner">
-                                    <span class="img_icon">
+                                        <div class="hover_frame_outside"></div>
+                                        <div class="hover_frame_top"></div>
+                                        <div class="hover_frame_bottom"></div>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="tab2 ">
+                                    <div class="character-thumb-inner">
+                                        <span class="img_icon">
                                         9s
                                     </span>
-                                    <div class="hover_frame_outside"></div>
-                                    <div class="hover_frame_top"></div>
-                                    <div class="hover_frame_bottom"></div>
-                                </div>
-                            </a>
-                            <a href="javascript:;" class="tab3 ">
-                                <div class="character-thumb-inner">
-                                    <span class="img_icon">
+                                        <div class="hover_frame_outside"></div>
+                                        <div class="hover_frame_top"></div>
+                                        <div class="hover_frame_bottom"></div>
+                                    </div>
+                                </a>
+                                <a href="javascript:;" class="tab3 ">
+                                    <div class="character-thumb-inner">
+                                        <span class="img_icon">
                                         a2
                                     </span>
-                                    <div class="hover_frame_outside"></div>
-                                    <div class="hover_frame_top"></div>
-                                    <div class="hover_frame_bottom"></div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- 展示 -->
-                        <div class="hero_pic">
-                            <div class="show data-2b">
-                                <!-- 属性 -->
-                                <div class="hero_shuxing">
-                                    <p class="sanjiao_top"></p>
-                                    <h1 class="bianhao"> <img src="images/page2/2b/bianhao.png" alt="" class="imgcove"> </h1>
-                                    <h2 class="title-min"><img src="images/page2/2b/title-min.png" alt="" class="imgcove"></h2>
-                                    <h3 class="title-max"><img src="images/page2/2b/title-max.png" alt="" class="imgcove"></h3>
-                                    <div class="hero_type"><img src="images/page2/2b/hero_type.png" alt="" class="imgcove"></div>
-                                    <div class="hero_des"><img src="images/page2/2b/hero_des.png" alt="" class="imgcove"></div>
-                                    <p class="sanjiao_bottom"></p>
-                                </div>
-                                <!-- 视频 -->
-                                <div class="hero_video">
-                                    <p class="btn btn_play" data-url="">
-                                        <img class="imgcove" src="images/page2/vfm.png" alt="">
-                                        <i class="btn i_play"></i>
-                                    </p>
-                                </div>
-                                <!-- 展示 -->
-                                <div class="hero_imgPic">
-                                    <img class="imgcove" src="images/page2/pic-2b.png" alt="">
-                                </div>
-                                <!-- cv -->
-                                <div class="hero_cv">
-                                    <div class="musicalNoteBg">
-                                        <div class="musicalNote active">
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                        </div>
+                                        <div class="hover_frame_outside"></div>
+                                        <div class="hover_frame_top"></div>
+                                        <div class="hover_frame_bottom"></div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
-                            <div class="show data-9s">
-                                <!-- 属性 -->
-                                <div class="hero_shuxing">
-                                    <p class="sanjiao_top"></p>
-                                    <h1 class="bianhao"> <img src="images/page2/9s/bianhao.png" alt="" class="imgcove"> </h1>
-                                    <h2 class="title-min"><img src="images/page2/9s/title-min.png" alt="" class="imgcove"></h2>
-                                    <h3 class="title-max"><img src="images/page2/9s/title-max.png" alt="" class="imgcove"></h3>
-                                    <div class="hero_type"><img src="images/page2/9s/hero_type.png" alt="" class="imgcove"></div>
-                                    <div class="hero_des"><img src="images/page2/9s/hero_des.png" alt="" class="imgcove"></div>
-                                    <p class="sanjiao_bottom"></p>
-                                </div>
-                                <!-- 视频 -->
-                                <div class="hero_video">
-                                    <p class="btn btn_play" data-url="">
-                                        <img class="imgcove" src="images/page2/vfm.png" alt="">
-                                        <i class="btn i_play"></i>
-                                    </p>
-                                </div>
-                                <div class="hero_imgPic">
-                                    <img class="imgcove" src="images/page2/pic-9s.png" alt="">
-                                </div>
-                                <div class="hero_cv">
-                                    <div class="musicalNoteBg">
-                                        <div class="musicalNote active">
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
+                            <!-- 展示 -->
+                            <div class="hero_pic">
+                                <div class="show data-2b">
+                                    <!-- 属性 -->
+                                    <div class="hero_shuxing">
+                                        <p class="sanjiao_top"></p>
+                                        <h1 class="bianhao"> <img src="images/page2/2b/bianhao.png" alt="" class="imgcove"> </h1>
+                                        <h2 class="title-min"><img src="images/page2/2b/title-min.png" alt="" class="imgcove"></h2>
+                                        <h3 class="title-max"><img src="images/page2/2b/title-max.png" alt="" class="imgcove"></h3>
+                                        <div class="hero_type"><img src="images/page2/2b/hero_type.png" alt="" class="imgcove"></div>
+                                        <div class="hero_des"><img src="images/page2/2b/hero_des.png" alt="" class="imgcove"></div>
+                                        <p class="sanjiao_bottom"></p>
+                                    </div>
+                                    <!-- 视频 -->
+                                    <div class="hero_video">
+                                        <p class="btn btn_play" data-url="">
+                                            <img class="imgcove" src="images/page2/vfm.png" alt="">
+                                            <i class="btn i_play"></i>
+                                        </p>
+                                    </div>
+                                    <!-- 展示 -->
+                                    <div class="hero_imgPic">
+                                        <img class="imgcove" src="images/page2/pic-2b.png" alt="">
+                                    </div>
+                                    <!-- cv -->
+                                    <div class="hero_cv">
+                                        <div class="musicalNoteBg">
+                                            <div class="musicalNote active">
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="show data-a2">
-                                <!-- 属性 -->
-                                <div class="hero_shuxing">
-                                    <p class="sanjiao_top"></p>
-                                    <h1 class="bianhao"> <img src="images/page2/a2/bianhao.png" alt="" class="imgcove"> </h1>
-                                    <h2 class="title-min"><img src="images/page2/a2/title-min.png" alt="" class="imgcove"></h2>
-                                    <h3 class="title-max"><img src="images/page2/a2/title-max.png" alt="" class="imgcove"></h3>
-                                    <div class="hero_type"><img src="images/page2/a2/hero_type.png" alt="" class="imgcove"></div>
-                                    <div class="hero_des"><img src="images/page2/a2/hero_des.png" alt="" class="imgcove"></div>
-                                    <p class="sanjiao_bottom"></p>
-                                </div>
-                                <!-- 视频 -->
-                                <div class="hero_video">
-                                    <p class="btn btn_play" data-url="">
-                                        <img class="imgcove" src="images/page2/vfm.png" alt="">
-                                        <i class="btn i_play"></i>
-                                    </p>
-                                </div>
-                                <div class="hero_imgPic">
-                                    <img class="imgcove" src="images/page2/pic-a2.png" alt="">
-                                </div>
-                                <div class="hero_cv">
-                                    <div class="musicalNoteBg">
-                                        <div class="musicalNote active">
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
-                                            <i></i>
+                                <div class="show data-9s">
+                                    <!-- 属性 -->
+                                    <div class="hero_shuxing">
+                                        <p class="sanjiao_top"></p>
+                                        <h1 class="bianhao"> <img src="images/page2/9s/bianhao.png" alt="" class="imgcove"> </h1>
+                                        <h2 class="title-min"><img src="images/page2/9s/title-min.png" alt="" class="imgcove"></h2>
+                                        <h3 class="title-max"><img src="images/page2/9s/title-max.png" alt="" class="imgcove"></h3>
+                                        <div class="hero_type"><img src="images/page2/9s/hero_type.png" alt="" class="imgcove"></div>
+                                        <div class="hero_des"><img src="images/page2/9s/hero_des.png" alt="" class="imgcove"></div>
+                                        <p class="sanjiao_bottom"></p>
+                                    </div>
+                                    <!-- 视频 -->
+                                    <div class="hero_video">
+                                        <p class="btn btn_play" data-url="">
+                                            <img class="imgcove" src="images/page2/vfm.png" alt="">
+                                            <i class="btn i_play"></i>
+                                        </p>
+                                    </div>
+                                    <div class="hero_imgPic">
+                                        <img class="imgcove" src="images/page2/pic-9s.png" alt="">
+                                    </div>
+                                    <div class="hero_cv">
+                                        <div class="musicalNoteBg">
+                                            <div class="musicalNote active">
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide swiper-no-swiping page3">
-                    <!-- 装饰元素 -->
-                    <div class="zhuangshi">
-                        <span class="cl1"></span>
-                        <span class="cl2"></span>
-                        <p class="line1 ani_line1"></p>
-                        <p class="line2 ani_line2"></p>
-                        <p class="line3 ani_line3"></p>
-                        <p class="line4 ani_line4"></p>
-                        <p class="line5 ani_line5"></p>
-                        <p class="line6 ani_line6"></p>
-                        <p class="line7"></p>
-                    </div>
-                    <div class="hero_box">
-                        <h2>parto2</h2>
-                        <div class="lb_tab_box">
-                            <div class="lb_tab_boxc">
-                                <div class="show">
-                                    <!-- 轮播图 -->
-                                    <div class="in1 exhibition_hall">
-                                        <div class="ban_r_btn hvr-backward"></div>
-                                        <div class="ban_l_btn hvr-forward"></div>
-                                        <div id="roundabout_tab1" class="roundabout_box" id="">
-                                            <ul>
-                                                <li><img src="images/page3/pic1.png" alt="1" title="1"></li>
-                                                <li><img src="images/page3/zt1.png" alt="2" title="2"></li>
-                                                <li><img src="images/page3/zt2.png" alt="3" title="3"></li>
-                                                <li><img src="images/page3/zt3.png" alt="4" title="4"></li>
-                                                <li><img src="images/page3/zt1.png" alt="5" title="5"></li>
-                                                <li><img src="images/page3/zt2.png" alt="6" title="6"></li>
-                                                <li><img src="images/page3/zt3.png" alt="7" title="7"></li>
-                                            </ul>
+                                <div class="show data-a2">
+                                    <!-- 属性 -->
+                                    <div class="hero_shuxing">
+                                        <p class="sanjiao_top"></p>
+                                        <h1 class="bianhao"> <img src="images/page2/a2/bianhao.png" alt="" class="imgcove"> </h1>
+                                        <h2 class="title-min"><img src="images/page2/a2/title-min.png" alt="" class="imgcove"></h2>
+                                        <h3 class="title-max"><img src="images/page2/a2/title-max.png" alt="" class="imgcove"></h3>
+                                        <div class="hero_type"><img src="images/page2/a2/hero_type.png" alt="" class="imgcove"></div>
+                                        <div class="hero_des"><img src="images/page2/a2/hero_des.png" alt="" class="imgcove"></div>
+                                        <p class="sanjiao_bottom"></p>
+                                    </div>
+                                    <!-- 视频 -->
+                                    <div class="hero_video">
+                                        <p class="btn btn_play" data-url="">
+                                            <img class="imgcove" src="images/page2/vfm.png" alt="">
+                                            <i class="btn i_play"></i>
+                                        </p>
+                                    </div>
+                                    <div class="hero_imgPic">
+                                        <img class="imgcove" src="images/page2/pic-a2.png" alt="">
+                                    </div>
+                                    <div class="hero_cv">
+                                        <div class="musicalNoteBg">
+                                            <div class="musicalNote active">
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                                <i></i>
+                                            </div>
                                         </div>
-                                        <div class="clear"></div>
                                     </div>
                                 </div>
-                                <div class="show">
-                                    <!-- 轮播图 -->
-                                    <div class="in2 exhibition_hall">
-                                        <div class="ban_r_btn hvr-backward"></div>
-                                        <div class="ban_l_btn hvr-forward"></div>
-                                        <div id="roundabout_tab2" class="roundabout_box" id="">
-                                            <ul>
-                                                <li><img src="images/page3/zt1.png" alt="1" title="1"></li>
-                                                <li><img src="images/page3/pic1.png" alt="2" title="2"></li>
-                                                <li><img src="images/page3/zt2.png" alt="3" title="3"></li>
-                                                <li><img src="images/page3/zt3.png" alt="4" title="4"></li>
-                                                <li><img src="images/page3/zt1.png" alt="5" title="5"></li>
-                                                <li><img src="images/page3/zt2.png" alt="6" title="6"></li>
-                                                <li><img src="images/page3/zt3.png" alt="7" title="7"></li>
-                                            </ul>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 轮播选项卡 -->
-                            <div class="lb_piclist">
-                                <p class="navItem spr1_imgarr" data-txt="ツイーター">
-                                    <span class="n_txt"></span>
-                                </p>
-                                <p class="navItem spr1_imgarr" data-txt="ゲーム内">
-                                    <span class="n_txt"></span>
-                                </p>
-                                <i class="after"></i>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="swiper-slide swiper-no-swiping page4">
-                    <!-- 装饰元素 -->
-                    <div class="zhuangshi">
-                        <span class="cl1"></span>
-                        <span class="cl2"></span>
-                        <p class="line1 ani_line1"></p>
-                        <p class="line2 ani_line2"></p>
-                        <p class="line3 ani_line3"></p>
-                        <p class="line4 ani_line4"></p>
-                        <p class="line5 ani_line5"></p>
-                        <p class="line6 ani_line6"></p>
-                        <p class="line7"></p>
-                    </div>
-                    <div class="hero_box">
-                        <h3>parto3</h2>
-                            <div class="moving-zone">
-                                <div class="popup">
-                                    <div class="s_img ">
-                                        <img src="images/page4/s1.png" alt="">
-                                        <span class="co_btn hvr-grow"></span>
+                    <div class="swiper-slide swiper-no-swiping page3">
+                        <!-- 装饰元素 -->
+                        <div class="zhuangshi">
+                            <span class="cl1"></span>
+                            <span class="cl2"></span>
+                            <p class="line1 ani_line1"></p>
+                            <p class="line2 ani_line2"></p>
+                            <p class="line3 ani_line3"></p>
+                            <p class="line4 ani_line4"></p>
+                            <p class="line5 ani_line5"></p>
+                            <p class="line6 ani_line6"></p>
+                            <p class="line7"></p>
+                        </div>
+                        <div class="hero_box">
+                            <h2>parto2</h2>
+                            <div class="lb_tab_box">
+                                <div class="lb_tab_boxc">
+                                    <div class="show">
+                                        <!-- 轮播图 -->
+                                        <div class="in1 exhibition_hall">
+                                            <div class="ban_r_btn hvr-backward"></div>
+                                            <div class="ban_l_btn hvr-forward"></div>
+                                            <div id="roundabout_tab1" class="roundabout_box" id="">
+                                                <ul>
+                                                    <li><img src="images/page3/pic1.png" alt="1" title="1"></li>
+                                                    <li><img src="images/page3/zt1.png" alt="2" title="2"></li>
+                                                    <li><img src="images/page3/zt2.png" alt="3" title="3"></li>
+                                                    <li><img src="images/page3/zt3.png" alt="4" title="4"></li>
+                                                    <li><img src="images/page3/zt1.png" alt="5" title="5"></li>
+                                                    <li><img src="images/page3/zt2.png" alt="6" title="6"></li>
+                                                    <li><img src="images/page3/zt3.png" alt="7" title="7"></li>
+                                                </ul>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
                                     </div>
-                                    <div class="s_img s_onopen">
-                                        <img src="images/page4/s2.png" alt="">
-                                        <span class="co_btn hvr-grow"></span>
+                                    <div class="show">
+                                        <!-- 轮播图 -->
+                                        <div class="in2 exhibition_hall">
+                                            <div class="ban_r_btn hvr-backward"></div>
+                                            <div class="ban_l_btn hvr-forward"></div>
+                                            <div id="roundabout_tab2" class="roundabout_box" id="">
+                                                <ul>
+                                                    <li><img src="images/page3/zt1.png" alt="1" title="1"></li>
+                                                    <li><img src="images/page3/pic1.png" alt="2" title="2"></li>
+                                                    <li><img src="images/page3/zt2.png" alt="3" title="3"></li>
+                                                    <li><img src="images/page3/zt3.png" alt="4" title="4"></li>
+                                                    <li><img src="images/page3/zt1.png" alt="5" title="5"></li>
+                                                    <li><img src="images/page3/zt2.png" alt="6" title="6"></li>
+                                                    <li><img src="images/page3/zt3.png" alt="7" title="7"></li>
+                                                </ul>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
                                     </div>
                                 </div>
+                                <!-- 轮播选项卡 -->
+                                <div class="lb_piclist">
+                                    <p class="navItem spr1_imgarr" data-txt="ツイーター">
+                                        <span class="n_txt"></span>
+                                    </p>
+                                    <p class="navItem spr1_imgarr" data-txt="ゲーム内">
+                                        <span class="n_txt"></span>
+                                    </p>
+                                    <i class="after"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide swiper-no-swiping page4">
+                        <!-- 装饰元素 -->
+                        <div class="zhuangshi">
+                            <span class="cl1"></span>
+                            <span class="cl2"></span>
+                            <p class="line1 ani_line1"></p>
+                            <p class="line2 ani_line2"></p>
+                            <p class="line3 ani_line3"></p>
+                            <p class="line4 ani_line4"></p>
+                            <p class="line5 ani_line5"></p>
+                            <p class="line6 ani_line6"></p>
+                            <p class="line7"></p>
+                        </div>
+                        <div class="hero_box">
+                            <h3>parto3</h2>
+                                <div class="moving-zone">
+                                    <div class="popup">
+                                        <div class="s_img ">
+                                            <img src="images/page4/s1.png" alt="">
+                                            <span class="co_btn hvr-grow"></span>
+                                        </div>
+                                        <div class="s_img s_onopen">
+                                            <img src="images/page4/s2.png" alt="">
+                                            <span class="co_btn hvr-grow"></span>
+                                        </div>
+                                    </div>
 
-                                <p class="popup_before"></p>
-                            </div>
+                                    <p class="popup_before"></p>
+                                </div>
+                        </div>
                     </div>
-                </div>
-                <div class="swiper-slide swiper-no-swiping page5">
-                    <div class="footer">
-                        <div class="footer-link">
-                            <a href="/info/2020/0731/2609.html" target="_blank">利用規約 </a>
-                            <a href="/info/2020/0731/2610.html" target="_blank">プライバシーポリシー </a>
-                            <a href="/info/2020/0731/2611.html" target="_blank">二次創作に関するガイドライン </a>
+                    <div class="swiper-slide swiper-no-swiping page5">
+                        <div class="footer">
+                            <div class="footer-link">
+                                <a href="/info/2020/0731/2609.html" target="_blank">利用規約 </a>
+                                <a href="/info/2020/0731/2610.html" target="_blank">プライバシーポリシー </a>
+                                <a href="/info/2020/0731/2611.html" target="_blank">二次創作に関するガイドライン </a>
+                            </div>
+                            <div class="footer-company">
+                                <img src="//cdnstatic.herogame.com/static/grayraven_jp/pc5/images/page6/company-logo.png" alt="">
+                            </div>
+                            <p class="footer-ratings">このホームページに掲載されている画像、文章、音声、動画等の全ての権利はHK HERO ENTERTAINMENTに帰属します。無断での使用・転載は固くお断りいたします。</p>
+                            <p class="footer-ratings">©GUANGZHOU KURO TECHNOLOGY CO., LTD. All RIGHTS RESERVED. ©HK HERO ENTERTAINMENT CO., LIMITED. ALL RIGHTS RESERVED.</p>
                         </div>
-                        <div class="footer-company">
-                            <img src="//cdnstatic.herogame.com/static/grayraven_jp/pc5/images/page6/company-logo.png" alt="">
-                        </div>
-                        <p class="footer-ratings">このホームページに掲載されている画像、文章、音声、動画等の全ての権利はHK HERO ENTERTAINMENTに帰属します。無断での使用・転載は固くお断りいたします。</p>
-                        <p class="footer-ratings">©GUANGZHOU KURO TECHNOLOGY CO., LTD. All RIGHTS RESERVED. ©HK HERO ENTERTAINMENT CO.,
-                            LIMITED. ALL RIGHTS RESERVED.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/swiper/dist/js/swiper.min.js"></script>
-<script src="js/bideo.js"></script>
-<script src="js/common.js"></script>
-<!-- <script src="js/TweenMax.min.js"></script> -->
-<script src="js/rem.js"></script>
-<script src="js/jquery.roundabout.min.js"></script>
-<script src="js/style.js"></script>
-<script>
-// 视频
-(function() {
-    var bv = new Bideo();
-    bv.init({
-        // Video element
-        videoEl: document.querySelector('#background_video'),
+    </body>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/swiper/dist/js/swiper.min.js"></script>
+    <script src="js/bideo.js"></script>
+    <script src="js/common.js"></script>
+    <!-- <script src="js/TweenMax.min.js"></script> -->
+    <script src="js/rem.js"></script>
+    <script src="js/jquery.roundabout.min.js"></script>
+    <script src="js/style.js"></script>
+    <script>
+        // 视频
+        (function() {
+            var bv = new Bideo();
+            bv.init({
+                // Video element
+                videoEl: document.querySelector('#background_video'),
 
-        // Container element
-        container: document.querySelector('body'),
+                // Container element
+                container: document.querySelector('body'),
 
-        // Resize
-        resize: true,
+                // Resize
+                resize: true,
 
-        // autoplay: false,
+                // autoplay: false,
 
-        isMobile: window.matchMedia('(max-width: 768px)').matches,
+                isMobile: window.matchMedia('(max-width: 768px)').matches,
 
-        playButton: document.querySelector('#play'),
-        pauseButton: document.querySelector('#pause'),
+                playButton: document.querySelector('#play'),
+                pauseButton: document.querySelector('#pause'),
 
-        // Array of objects containing the src and type
-        // of different video formats to add
-        src: [{
-            src: 'video/v1.mp4',
-            type: 'video/mp4'
-        }],
+                // Array of objects containing the src and type
+                // of different video formats to add
+                src: [{
+                    src: 'video/v1.mp4',
+                    type: 'video/mp4'
+                }],
 
-        // What to do once video loads (initial frame)
-        onLoad: function() {
-            document.querySelector('#video_cover').style.display = 'none';
-        }
-    });
-}());
-</script>
+                // What to do once video loads (initial frame)
+                onLoad: function() {
+                    document.querySelector('#video_cover').style.display = 'none';
+                }
+            });
+        }());
+    </script>
 
 </html>
