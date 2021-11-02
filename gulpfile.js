@@ -1,9 +1,18 @@
 const gulp = require('gulp'); // gulp 
-const { series, parallel, src, dest, watch } = gulp; //  创建一个文件拷贝任务,文件拷贝需要使用到gulp提供的方法
+const {
+    series,
+    parallel,
+    src,
+    dest,
+    watch
+} = gulp; //  创建一个文件拷贝任务,文件拷贝需要使用到gulp提供的方法
 const concat = require('gulp-concat'); // 文件合并
 const cssMinify = require('gulp-css-minify') // css文件压缩
 const autoprefixer = require('gulp-autoprefixer') // css自动补全前缀
 const del = require('del'); //清空文件夹，避免文件冗余
+const babel = require('gulp-babel'); // es6转es5
+const uglify = require('gulp-uglify') //压缩JS
+
 
 
 
@@ -20,20 +29,36 @@ function css(cb) {
         }))
         .pipe(gulp.dest('./dist/css')) // 输出文件路径
         .pipe(cssMinify()) // css 文件压缩
-        .pipe(gulp.dest('./dist/css')); //写入dist文件夹
+        .pipe(gulp.dest('./dist/css')) //写入dist文件夹
+
     cb();
 }
 
 function js(cb) {
     gulp.src('./app/js/**/*.js') // 读取js 文件路径
+        .pipe(babel()) //es转es5
+        .pipe(uglify({
+            compress: {
+                drop_console: true, // 过滤 console
+                drop_debugger: true // 过滤 debugger
+            },
+            output: {
+                beautify: false, //开启美化
+                comments: 'some' // 保留部分注释
+            }
+        }))
         .pipe(concat('build.min.js')) //合并匹配到的指定类型文件并命名为 "build.min.js"
         .pipe(gulp.dest('./dist/js')) // 输出文件路径
+        
     cb();
 }
 
 
 // 导出 处理css的任务 ,导出后才能 gulp.css 调用  区别于 gulp.task方式
+exports.clean = clean;
 exports.css = css;
 exports.js = js;
+
+exports.buildJs = series(clean, js);
 
 exports.default = series(clean, css, js);

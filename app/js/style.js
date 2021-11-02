@@ -4,6 +4,11 @@
  * @Last Modified by:   A
  * @Last Modified time: 2021-10-22 18:13:00
  */
+
+const p = new Promise((resolve, reject)=>{
+    resolve('xxxx');
+})
+console.log(p);
 $(function() {
 
     //关闭
