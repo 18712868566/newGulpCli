@@ -6,7 +6,7 @@ const tap = require('gulp-tap'); // 指定关键词过滤器
 const buffer = require('gulp-buffer'); // 一些 gulp 插件不支持流式文件内容。gulp-buffer 和 gulp-stream 来救援。
 const sourcemaps = require('gulp-sourcemaps'); // 对 gulpjs 的源映射支持。
 
-
+// demo
 const gulp = require('gulp'); // gulp 
 const {
     series,
