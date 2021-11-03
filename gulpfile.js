@@ -1,3 +1,12 @@
+
+const source = require('vinyl-source-stream'); // 在gulp 中直接使用npm包  
+const browserify = require('browserify'); // 转义 es6789更高级语法 export、import、class
+const log = require('gulplog'); //  gulp 和 gulp 插件的记录器 类似 console.log
+const tap = require('gulp-tap'); // 指定关键词过滤器
+const buffer = require('gulp-buffer'); // 一些 gulp 插件不支持流式文件内容。gulp-buffer 和 gulp-stream 来救援。
+const sourcemaps = require('gulp-sourcemaps'); // 对 gulpjs 的源映射支持。
+
+
 const gulp = require('gulp'); // gulp 
 const {
     series,
@@ -54,7 +63,7 @@ function css() {
  *   处理js
  */
 function js() {
-    return gulp.src(['./app/js/**/*.js']) // 读取js 文件路径
+    return gulp.src(['./app/js/**/*.js']) //不需要读取文件，因为 browserify 可以。
         .pipe(babel()) //es转es5
         .pipe(uglify({
             compress: {
@@ -66,9 +75,45 @@ function js() {
                 comments: 'some' // 保留部分注释
             }
         }))
+        // 编写源映射
+        .pipe(sourcemaps.write('./'))
         //.pipe(concat('build.min.js')) //合并匹配到的指定类型文件并命名为 "build.min.js"
         .pipe(gulp.dest('./dist/js')) // 输出文件路径
 
+}
+
+
+function jsBrowserify() {
+    return gulp.src('./app/js/**/*.js', {
+        read: false
+    }) // no need of reading file because browserify does.
+    // transform file objects using gulp-tap plugin
+    .pipe(babel()) //es转es5
+    .pipe(tap(function (file) {
+
+            log.info('bundling ' + file.path);
+
+            // replace file contents with browserify's bundle stream
+            file.contents = browserify(file.path, {
+                debug: true
+            }).bundle();
+
+        }))
+
+        // transform streaming contents into buffer contents (because gulp-sourcemaps does not support streaming contents)
+        .pipe(buffer())
+
+        // load and init sourcemaps
+        .pipe(sourcemaps.init({
+            loadMaps: true
+        }))
+
+        .pipe(uglify())
+
+        // write sourcemaps
+        .pipe(sourcemaps.write('./'))
+
+        .pipe(gulp.dest('dist'));
 }
 
 /*
@@ -94,7 +139,7 @@ function minimg() {
  *   ==================================font
  *   处理字体
  */
-function fontspider() {
+function fontMinspider() {
     return gulp.src('./app/*.html')
         .pipe(fontSpider())
 }
@@ -102,6 +147,11 @@ function fontspider() {
 function copyFont() {
     return gulp.src('./app/font/*')
         .pipe(gulp.dest('./dist/font/'))
+}
+
+function copyBowerFile() {
+    return gulp.src(['./app/bower_components/**/**'])
+        .pipe(gulp.dest('./dist/bower_components'));
 }
 
 /*
@@ -157,12 +207,18 @@ exports.clean = clean;
 exports.css = css;
 exports.js = js;
 exports.minimg = minimg;
-exports.fontspider = fontspider;
+exports.fontMinspider = fontMinspider;
 exports.copyFont = copyFont;
 exports.server = server;
 exports.copyAudio = copyAudio;
 exports.copyVideo = copyVideo;
+exports.copyBowerFile = copyBowerFile;
 exports.setHtmlmin = setHtmlmin;
+
+exports.jsBrowserify = jsBrowserify;
+
+exports.browserify = browserify;
+
 
 // 单独处理js
 exports.buildJs = series(clean, js);
@@ -172,9 +228,10 @@ exports.default = series(
     parallel(
         css,
         js,
-        series(fontspider, copyFont)
+        series(fontMinspider, copyFont)
     ),
     minimg,
+    copyBowerFile,
     copyAudio,
     copyVideo,
     setHtmlmin
