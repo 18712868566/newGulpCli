@@ -35,7 +35,7 @@ var fontSpider = require('gulp-font-spider'); // 字体压缩
     清空目标目录
 */
 function clean() {
-    return del(['dist']);
+    return del(['dist', 'dest']);
 }
 /*
  *   ==================================css
@@ -70,15 +70,8 @@ function js() {
                 comments: 'some' // 保留部分注释
             }
         }))
-        // 编写源映射
-        .pipe(sourcemaps.write('./'))
         //.pipe(concat('build.min.js')) //合并匹配到的指定类型文件并命名为 "build.min.js"
-        .pipe(gulp.dest('./dist/js')) // 输出文件路径
-
-}
-
-
-function jsBrowserify() {
+        .pipe(gulp.dest('./dest/js')) // 输出文件路径
 
 }
 
@@ -181,9 +174,6 @@ exports.copyVideo = copyVideo;
 exports.copyBowerFile = copyBowerFile;
 exports.setHtmlmin = setHtmlmin;
 
-exports.jsBrowserify = jsBrowserify;
-
-exports.browserify = browserify;
 
 
 // 单独处理js
@@ -193,7 +183,7 @@ exports.default = series(
     clean,
     parallel(
         css,
-        js,
+        // js,
         series(fontMinspider, copyFont)
     ),
     minimg,
