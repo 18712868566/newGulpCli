@@ -4,7 +4,10 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "browserify dest/js/style.js -o dist/js/style.min.js",
+        "1": " browserify dest/js/material.js -o dist/js/material.min.js",
+        "2": "npx browserify dest/js/clipper.js -o dist/js/clipper.min.js"
     },
     "author": "",
     "license": "ISC",

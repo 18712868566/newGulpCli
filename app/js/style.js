@@ -26,10 +26,10 @@ const ISpriteType = {
 
 console.log(GetIMGPath("__mz__Role", 24, ISpriteType.role), );
 
-Clipper.draw()
 
 
-const p = new Promise((resolve, reject)=>{
+
+const p = new Promise((resolve, reject) => {
     resolve('xxxx');
 })
 console.log(p);
@@ -165,12 +165,12 @@ $(function() {
 
         $('.lb_piclist .after')
             .css('left', moveX / 100 + 'rem')
-            .css('top', (moveY+120) / 100 + 'rem')
+            .css('top', (moveY + 120) / 100 + 'rem')
             .css('transform', 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)');
 
         $('.popup,.popup_before')
-            .css('left', (moveX+700) / 100 + 'rem')
-            .css('top', (moveY+500) / 100 + 'rem')
+            .css('left', (moveX + 700) / 100 + 'rem')
+            .css('top', (moveY + 500) / 100 + 'rem')
             .css('transform', 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)');
     });
 
@@ -192,7 +192,7 @@ function updataTime() {
     let minutes = date.getMinutes();
     let second = date.getSeconds();
 
-    timestr = check(hour) + ":" + check(minutes) + ":" + check(second);
+    var timestr = check(hour) + ":" + check(minutes) + ":" + check(second);
 
     $('.rec-time').html(timestr)
 }

@@ -70,11 +70,15 @@ function js() {
                 comments: 'some' // 保留部分注释
             }
         }))
-        //.pipe(concat('build.min.js')) //合并匹配到的指定类型文件并命名为 "build.min.js"
+        // .pipe(concat('build.js')) //合并匹配到的指定类型文件并命名为 "build.min.js"
         .pipe(gulp.dest('./dest/js')) // 输出文件路径
 
 }
 
+function copyDestJs() {
+    return gulp.src(['./dest/js/**/*.js'])
+        .pipe(gulp.dest('./dist/js')) // 输出文件路径
+}
 /*
  *   ==================================img
  *   处理图片
@@ -165,6 +169,8 @@ function server() {
 exports.clean = clean;
 exports.css = css;
 exports.js = js;
+exports.copyDestJs = copyDestJs;
+
 exports.minimg = minimg;
 exports.fontMinspider = fontMinspider;
 exports.copyFont = copyFont;
@@ -184,6 +190,7 @@ exports.default = series(
     parallel(
         css,
         // js,
+        series(js, copyDestJs),
         series(fontMinspider, copyFont)
     ),
     minimg,
