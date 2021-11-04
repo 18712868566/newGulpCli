@@ -1,10 +1,5 @@
-
 const source = require('vinyl-source-stream'); // 在gulp 中直接使用npm包  
 const browserify = require('browserify'); // 转义 es6789更高级语法 export、import、class
-const log = require('gulplog'); //  gulp 和 gulp 插件的记录器 类似 console.log
-const tap = require('gulp-tap'); // 指定关键词过滤器
-const buffer = require('gulp-buffer'); // 一些 gulp 插件不支持流式文件内容。gulp-buffer 和 gulp-stream 来救援。
-const sourcemaps = require('gulp-sourcemaps'); // 对 gulpjs 的源映射支持。
 
 // demo
 const gulp = require('gulp'); // gulp 
@@ -84,36 +79,7 @@ function js() {
 
 
 function jsBrowserify() {
-    return gulp.src('./app/js/**/*.js', {
-        read: false
-    }) // no need of reading file because browserify does.
-    // transform file objects using gulp-tap plugin
-    .pipe(babel()) //es转es5
-    .pipe(tap(function (file) {
 
-            log.info('bundling ' + file.path);
-
-            // replace file contents with browserify's bundle stream
-            file.contents = browserify(file.path, {
-                debug: true
-            }).bundle();
-
-        }))
-
-        // transform streaming contents into buffer contents (because gulp-sourcemaps does not support streaming contents)
-        .pipe(buffer())
-
-        // load and init sourcemaps
-        .pipe(sourcemaps.init({
-            loadMaps: true
-        }))
-
-        .pipe(uglify())
-
-        // write sourcemaps
-        .pipe(sourcemaps.write('./'))
-
-        .pipe(gulp.dest('dist'));
 }
 
 /*
