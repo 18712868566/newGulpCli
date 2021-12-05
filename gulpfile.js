@@ -24,7 +24,7 @@ const pngquant = require('imagemin-pngquant'); // 控制台打印前后变化
 const tiny = require('gulp-tinypng-nokey'); // tinypng 模拟用户上传和下载的行为，来得到压缩图片，突破使用官网api每月500张限制
 
 const browserSync = require('browser-sync').create(); // 浏览器运行
-
+const { createProxyMiddleware } = require('http-proxy-middleware');
 // const changed = require('gulp-changed'); //监听文件发生改变
 
 // font字体压缩
@@ -155,11 +155,40 @@ function setHtmlmin() {
  *   本地开发
  */
 
+const options = {
+    target: 'http://shinsangokushi.com', // 目标服务器 host
+    changeOrigin: false, // 默认false，是否需要改变原始主机头为目标URL
+    pathRewrite: {
+        // '^/api/old-path': '/api/new-path', // 重写请求，比如我们源访问的是api/old-path，那么请求会被解析为/api/new-path
+        // '^/api/remove/path': '/path' // 同上
+
+        '^/pray/get-user-info.html': '/api/gitUserInfo', // 重写请求，比如我们源访问的是/pray/get-user-info.html，那么请求会被解析为/api/gitUserInfo
+    },
+    router: {
+        // 如果请求主机 == 'dev.localhost:3000',
+        // 重写目标服务器 'http://shinsangokushi.com' 为 'http://localhost:8000'
+        // 'http://shinsangokushi.com': 'http://localhost:8000'
+    },
+    logLevel: 'debug'
+}
+
+const jsonPlaceholderProxy = createProxyMiddleware('/first-year', {
+    target: 'https://grayraven.jp', // 目标服务器 host
+    changeOrigin: true, // 默认false，是否需要改变原始主机头为目标URL
+    logLevel: 'debug',
+});
+
+
 function server() {
+    let proxy = createProxyMiddleware(options);
+
     browserSync.init({
         server: {
-            baseDir: './app'
-        }
+            baseDir: './app',
+            port: 8000,
+            middleware: [jsonPlaceholderProxy],
+        },
+        ghostMode: false, //关掉多设备同步
     });
     gulp.watch('./app').on('change', browserSync.reload);
 }

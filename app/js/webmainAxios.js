@@ -29,9 +29,9 @@ function preloadImg() {
                 });
 
                 // 获取预约人数
-                setTimeout(function(){
+                setTimeout(function() {
                     Projet_Global_Parameter.getBindPerson();
-                },1000)
+                }, 1000)
             } else {
                 $(".percent").text(`${Math.round(count / length * 100)}`);
             }
@@ -309,8 +309,17 @@ var Projet_Global_Parameter = {
             return false;
         }
     },
+    // 检查用户信息
+    getCheckRoleId: async function(gameId) {
+        var res = await instance.get('/first-year/check-role-id', {
+            params: {
+                user_id: gameId
+            }
+        });
+        console.log(res.data)
+    },
     // 获取用户信息
-    getUserInfo:async function(){
+    getUserInfo: async function() {
         var res = await instance.post('/first-year/get-user-info');
         console.log(res.data)
         var data = res.data.data;
@@ -327,200 +336,28 @@ var Projet_Global_Parameter = {
             sessionStorage.setItem('sess-today_task_2', JSON.stringify(data.user_info.today_task_2));
             // 任务3
             sessionStorage.setItem('sess-today_task_3', JSON.stringify(data.user_info.today_task_2));
-
-            if (data.user_info.left_points>500) {
-                $('#lt5').addClass('curr');
-                var getTop = $('.lott-pic1').offset().top;
-                $( ".drag-box").stop().animate({ "scrollTop" : getTop },0);
-            }
-            if (data.user_info.left_points>1000) {
-                $('#lt10').addClass('curr');
-                var getTop = $('.lott-pic2').offset().top;
-                $( ".drag-box").stop().animate({ "scrollTop" : getTop },0);
-            }
-            if (data.user_info.left_points>1500) {
-                $('#lt15').addClass('curr');
-                var getTop = $('.lott-pic3').offset().top;
-                $( ".drag-box").stop().animate({ "scrollTop" : getTop },0);
-            }
-
-            if (data.user_info.left_points>2000) {
-                $('#lt20').addClass('curr');
-                var getTop = $('.lott-pic4').offset().top;
-                $( ".drag-box").stop().animate({ "scrollTop" : getTop },0);
-            }
-
-            if (data.user_info.left_points>3000) {
-                $('#lt25,#lt30').addClass('curr');
-                var getTop = $('.lott-pic5').offset().top;
-                $( ".drag-box").stop().animate({ "scrollTop" : getTop },0);
-            }
-            if (data.user_info.left_points>4500) {
-                $('#lt35,#lt40,#lt45').addClass('curr');
-                var getTop = $('.lott-pic6').offset().top;
-                $( ".drag-box").stop().animate({ "scrollTop" : getTop },0);
-            }
-
-            if (data.user_info.left_points>6000) {
-                $('#lt50,#lt55,#lt60').addClass('curr');
-                var getTop = $('.lott-pic7').offset().top;
-                $( ".drag-box").stop().animate({ "scrollTop" : getTop },0);
-            }
-
-            if (data.user_info.left_points>8000) {
-                $('#lt65,#lt70,#lt75,#lt80').addClass('curr');
-                var getTop = $('.lott-pic8').offset().top;
-                $( ".drag-box").stop().animate({ "scrollTop" : getTop },0);
-            }
-
-            if (data.user_info.left_points>10000) {
-                $('#lt85,#lt90,#lt95,#lt100').addClass('curr');
-                var getTop = $('.lott-pic9').offset().top;
-                $( ".drag-box").stop().animate({ "scrollTop" : getTop },0);
-            }
-
-            if (data.user_info.left_points>12000) {
-                $('#lt105,#lt110,#lt115,#lt120').addClass('curr');
-                var getTop = $('.lott-pic10').offset().top;
-                $( ".drag-box").stop().animate({ "scrollTop" : getTop },0);
-            }
-
-            if (data.user_info.left_points>13500) {
-                $('#lt125,#lt130,#lt135').addClass('curr');
-                var getTop = $('.lott-pic11').offset().top;
-                $( ".drag-box").stop().animate({ "scrollTop" : getTop },0);
-            }
-
-            if (data.user_info.left_points>15000) {
-                $('#lt140,#lt145,#lt150').addClass('curr');
-                var getTop = $('.lott-pic12').offset().top;
-                $( ".drag-box").stop().animate({ "scrollTop" : getTop },0);
-            }
-
-            // 任务一完成
-            if (data.user_info.today_task_1 == 0) {
-                // 未领取
-                $('.btn_lingqu_fb').addClass('btn_lingqu_no');
-            }
-            if (data.user_info.today_task_1 == 1) {
-                // 可领取
-                $('.btn_lingqu_fb').addClass('btn_lingqu_yes_o');
-            }
-            if (data.user_info.today_task_1 == 2) {
-                // 已领取
-                $('.btn_lingqu_fb').addClass('btn_lingqu_over');
-            }
-
-            // 任务二完成
-            if (data.user_info.today_task_2 == 0) {
-                // 未领取
-                $('.btn_lingqu_share').addClass('btn_lingqu_no');
-            }
-            if (data.user_info.today_task_2 == 1) {
-                // 可领取
-                $('.btn_lingqu_share').addClass('btn_lingqu_yes_g');
-            }
-            if (data.user_info.today_task_2 == 2) {
-                // 已领取
-                $('.btn_lingqu_share').addClass('btn_lingqu_over');
-            }
-
-            // 任务三完成
-            if (data.user_info.today_task_3 == 0) {
-                // 未领取
-                $('.btn_lingqu_game').addClass('btn_lingqu_no');
-            }
-            if (data.user_info.today_task_3 == 1) {
-                // 可领取
-                $('.btn_lingqu_game').addClass('btn_lingqu_yes_o');
-            }
-            if (data.user_info.today_task_3 == 2) {
-                // 已领取
-                $('.btn_lingqu_game').addClass('btn_lingqu_over');
-            }
-
-            // 奖励可领抖动
-            if (data.user_info.gift_1 == 1) {
-                $('.lott-pic1').addClass('light');
-            }
-            if (data.user_info.gift_2 == 1) {
-                $('.lott-pic2').addClass('light');
-            }
-            if (data.user_info.gift_3 == 1) {
-                $('.lott-pic3').addClass('light');
-            }
-            if (data.user_info.gift_4 == 1) {
-                $('.lott-pic4').addClass('light');
-            }
-            if (data.user_info.gift_5 == 1) {
-                $('.lott-pic5').addClass('light');
-            }
-            if (data.user_info.gift_6 == 1) {
-                $('.lott-pic6').addClass('light');
-            }
-            if (data.user_info.gift_7 == 1) {
-                $('.lott-pic7').addClass('light');
-            }
-            if (data.user_info.gift_8 == 1) {
-                $('.lott-pic8').addClass('light');
-            }
-            if (data.user_info.gift_9 == 1) {
-                $('.lott-pic9').addClass('light');
-            }
-            if (data.user_info.gift_10 == 1) {
-                $('.lott-pic10').addClass('light');
-            }
-            if (data.user_info.gift_11 == 1) {
-                $('.lott-pic11').addClass('light');
-            }
-            if (data.user_info.gift_12 == 1) {
-                $('.lott-pic12').addClass('light');
-            }
-
-            // 奖励领取后变灰
-            if (data.user_info.gift_1 == 2) {
-                $('.lott-pic1').removeClass('.light').addClass('gray');
-            }
-            if (data.user_info.gift_2 == 2) {
-                $('.lott-pic2').removeClass('.light').addClass('gray');
-            }
-            if (data.user_info.gift_3 == 2) {
-                $('.lott-pic3').removeClass('.light').addClass('gray');
-            }
-            if (data.user_info.gift_4 == 2) {
-                $('.lott-pic4').removeClass('.light').addClass('gray');
-            }
-            if (data.user_info.gift_5 == 2) {
-                $('.lott-pic5').removeClass('.light').addClass('gray');
-            }
-            if (data.user_info.gift_6 == 2) {
-                $('.lott-pic6').removeClass('.light').addClass('gray');
-            }
-            if (data.user_info.gift_7 == 2) {
-                $('.lott-pic7').removeClass('.light').addClass('gray');
-            }
-            if (data.user_info.gift_8 == 2) {
-                $('.lott-pic8').removeClass('.light').addClass('gray');
-            }
-            if (data.user_info.gift_9 == 2) {
-                $('.lott-pic9').removeClass('.light').addClass('gray');
-            }
-            if (data.user_info.gift_10 == 2) {
-                $('.lott-pic10').removeClass('.light').addClass('gray');
-            }
-            if (data.user_info.gift_11 == 2) {
-                $('.lott-pic11').removeClass('.light').addClass('gray');
-            }
-            if (data.user_info.gift_12 == 2) {
-                $('.lott-pic12').removeClass('.light').addClass('gray');
-            }
-            
+        }
+    },
+    // 观看回调
+    watchPlay: async function() {
+        var res = await instance.post('/first-year/watch');
+        console.log(res.data)
+        if (res.data.code == 0) {
+            console.log('观看回调 - ok')
+        }
+    },
+    // 发奖回调
+    presentLott: async function() {
+        var res = await instance.post('/first-year/present');
+        console.log(res.data)
+        if (res.data.code == 0) {
+            console.log('发奖回调 - ok')
         }
     },
     // 领积分
-    lottFn:async function(type){
-        var res = await instance.post('/first-year/draw',{
-            draw_type:type
+    lottFn: async function(type) {
+        var res = await instance.post('/first-year/draw', {
+            draw_type: type
         });
         console.log(res.data)
         if (res.data.code == 0) {
@@ -546,13 +383,12 @@ var Projet_Global_Parameter = {
 
     },
     // 积分兑换
-    exchangeFn:async function(id){
-        var res = await instance.post('/first-year/exchange',{
-            gift_id:id
+    exchangeFn: async function(id) {
+        var res = await instance.post('/first-year/exchange', {
+            gift_id: id
         });
         console.log(res.data)
-        if (res.data.code == 0) {
-        }
+        if (res.data.code == 0) {}
 
     },
 }
@@ -560,38 +396,41 @@ var Projet_Global_Parameter = {
 
 
 /*
-* 接口问题： 
-* 1-获取用户信息少，分享状态 
-* 2-领取奖励状态 0 - 1 - 2
-* 3-加一个奖励列表的接口 或 背包接口
-* 4-晚安电话少个一个提交按钮 和 二次确认弹框 和成功弹框
-*/
+ * 接口问题： 
+ * 1-获取用户信息少，分享状态 
+ * 2-领取奖励状态 0 - 1 - 2
+ * 3-加一个奖励列表的接口 或 背包接口
+ * 4-晚安电话少个一个提交按钮 和 二次确认弹框 和成功弹框
+ */
 
 
 $(function() {
-
+    // 检查
+    Projet_Global_Parameter.getCheckRoleId();
     // 获取用户信息
-    // Projet_Global_Parameter.getUserInfo();
+    Projet_Global_Parameter.getUserInfo();
+    // 观看回调
+    Projet_Global_Parameter.watchPlay();
 
-    
+
     // 领积分1
-    $(document).on('click','.btn_lingqu_fb.btn_lingqu_yes_o',function () {
+    $(document).on('click', '.btn_lingqu_fb.btn_lingqu_yes_o', function() {
         Projet_Global_Parameter.lottFn('1')
     })
 
     // 领积分2
-    $(document).on('click','.btn_lingqu_share.btn_lingqu_yes_g',function () {
+    $(document).on('click', '.btn_lingqu_share.btn_lingqu_yes_g', function() {
         Projet_Global_Parameter.lottFn('2')
     })
 
     // 领积分3
-    $(document).on('click','.btn_lingqu_game.btn_lingqu_yes_o',function () {
+    $(document).on('click', '.btn_lingqu_game.btn_lingqu_yes_o', function() {
         Projet_Global_Parameter.lottFn('3')
     })
 
 
     // 领奖励
-    $('.lott-pic.light').on('click',function () {
+    $('.lott-pic.light').on('click', function() {
         var dataImg = $(this).attr('data-img');
         // 领奖动画 == 加入购物车效果
 
@@ -600,11 +439,10 @@ $(function() {
         // Projet_Global_Parameter.getUserInfo();
 
     })
-   
 
 
 
 
-    
+
+
 })
-

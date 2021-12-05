@@ -4,31 +4,6 @@
  * @Last Modified by: mikey.zhaopeng
  * @Last Modified time: 2021-11-We 02:10:51
  */
-
-import * as Clipper from './clipper.js';
-import {
-    GetIMGPath,
-    roleName,
-    description1,
-    description2,
-    description3,
-    getPath,
-    imgLoad,
-} from './material.js';
-
-const ISpriteType = {
-    role: 0, // 角色
-    samllPartA: 1, // 小物件a
-    samllPartB: 2, // 小物件b
-    captionBg: 3, // 背景
-    captionBorder: 4, // 边框
-};
-
-console.log(GetIMGPath("__mz__Role", 24, ISpriteType.role), );
-
-
-
-
 const p = new Promise((resolve, reject) => {
     resolve('xxxx');
 })
